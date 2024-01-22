@@ -1,23 +1,32 @@
-import logo from './logo.svg';
 import './App.css';
+import './bootstrap.css';
+import { BrowserRouter as Router, Route, Routes} from 'react-router-dom'
+import NavBar from './Navbar';
+import LoginPageInput from './Login';
+import HomeScreen from './Homescreen';
+import RegisterForm from './Register';
+import TransactionLists from './transactions/TransactionList';
+import TransactionCreate from './transactions/TransactionCreate';
 
 function App() {
+
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+          
+          
+          <Routes>
+            <Route exact path='/' element={<HomeScreen/>}/>
+            <Route exact path='/transactions' element={<TransactionLists/>}/>
+            <Route exact path='/transactions/create' element={<TransactionCreate/>}/>
+            <Route exact path='/login' element={<LoginPageInput/>}/>
+            <Route exact path='/register' element={<RegisterForm/>}/>
+          </Routes>
+      </Router>
+      
+
     </div>
   );
 }
