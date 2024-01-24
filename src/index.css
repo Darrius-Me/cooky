@@ -6,8 +6,30 @@
   margin: 0;
   font-family: "Lexend";
 }
+
+.alternate_font {
+  font-family: "Paytone One";
+  color: #cb4036;
+}
+
+.col-50 {
+  width: 50%;
+}
+
+.contain {
+  display: flex;
+}
+
+.one {
+  width: 45%;
+}
+
+.two {
+  margin-left: 5%;
+  width: 50%
+}
+
 .navbar {
-  padding: 20px;
   display: flex;
   align-items: center;
   max-width: 80%;
@@ -23,7 +45,6 @@
 .navbar a {
   margin-left: 16px;
   text-decoration: none;
-  padding: 6px;
 }
 .navbar a:hover {
   color: #3548f1;
@@ -37,9 +58,10 @@
 
 /* forms */
 .forms {
-  max-width: 400px;
+  max-width: 600px;
 }
 .forms label {
+  margin-top: 10px;
   text-align: left;
   display: block;
 }
@@ -52,19 +74,20 @@
   width: 100%;
   padding: 6px 10px;
   margin: 10px 0;
-  border-radius: 40px;
   border: 1px solid #ddd;
   box-sizing: border-box;
   display: block;
+  background-color: #ebebeb;
 }
-.forms button {
-  background: #f1356d;
-  color: #fff;
-  border: 0;
-  padding: 8px;
-  border-radius: 8px;
-  cursor: pointer;
+
+.forms input{
+  border-radius: 40px;
 }
+
+.forms textarea{
+  border-radius: 20px;
+}
+
 
 .inputerror {
   color: #f1356d;
@@ -114,4 +137,175 @@
   padding-top: 10%;
   padding-left: 10%;
   color: #cb4036;
+}
+
+.form-page{
+  background-image: linear-gradient(to left, rgba(255,255,255,0) 5%,
+              rgba(255,255,255,1)), url("resources/login-bg.png");
+  height: 100vh;
+  background-position: right;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: left;
+  padding-top: 5%;
+  padding-left: 10%;
+  color: #cb4036;
+}
+
+.recipe-preview {
+  padding: 10px 16px;
+  border-bottom: 1px solid #fafafa;
+  width: 300px;
+  height: 200px;
+  background-color: #35acf1;
+  background-size: cover;
+  border-radius: 20px;
+}
+
+.recipe-preview-container {
+  margin-top: 20px;
+  margin-right: 20px ;
+}
+
+.recipe-preview:hover {
+  box-shadow: 1px 3px 5px rgba(0,0,0,0.1);
+}
+.recipe-preview h2 {
+  font-size: 20px;
+  color: #f1356d;
+  margin-bottom: 8px;
+}
+.recipe-preview a{
+  text-decoration: none;
+  
+}
+
+.recipelist-page {
+  text-align: left;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 2%;
+}
+
+.recipelist {
+  margin-top: 30px;
+  display: flex;
+  vertical-align: top;
+  width: 100%;
+  overflow: auto;
+  max-height: 90vh;
+}
+
+.div-button {
+  background-color: #cb4036;
+  color: #fff;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  display: inline-block;
+  border: 0;
+}
+
+.div-button-alternate {
+  background-color: #fff;
+  color: #cb4036;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  display: inline-block;
+  border: 0;
+}
+
+.round-edge {
+  border-radius: 20px;
+}
+
+.view-page {
+  height: 100%;
+  text-align: left;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 3%;
+}
+
+.view-info {
+  vertical-align: sub;
+}
+
+.view-page-foreground{
+  background-image: linear-gradient(to left, rgba(255,255,255,0) 30%,
+              rgba(2, 2, 2, 0.747));
+  background-position: right;
+  background-size: cover;
+}
+
+.create-page{
+  background-image: linear-gradient(to left, rgba(255,255,255,0) 5%,
+              rgba(255,255,255,1)), url("resources/create-bg.png");
+  background-position: right;
+  background-size: cover;
+  text-align: left;
+  padding-top: 5%;
+  padding-left: 10%;
+  padding-bottom: 5%;
+  color: #cb4036;
+  overflow: auto;
+  max-height: 90vh;
+}
+
+.edit-page {
+  text-align: left;
+  padding-top: 5%;
+  padding-left: 10%;
+  padding-bottom: 5%;
+  color: #cb4036;
+  overflow: auto;
+  max-height: 90vh;
+}
+
+
+.edit-page-foreground{
+  background-image: linear-gradient(to left, rgba(255,255,255,0) 5%,
+              rgba(255,255,255,1));
+  background-position: right;
+  background-size: cover;
+}
+
+.edit-page-background{
+  background-position: right;
+  background-size: cover;
+}
+
+.ingredients-wrapper {
+  width: 30%;
+}
+
+.procedure-wrapper {
+  margin-left: 5%;
+  width: 65%;
+}
+
+.details-info {
+  color: #FFC327;
+}
+
+.setbackground {
+  height: 400px;
+  background-position: right;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.details-admin {
+  width: 100%;
+}
+
+.right-align {
+  float: right;
+}
+
+.navbarcustom {
+  display: flex;
 }

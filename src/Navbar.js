@@ -1,4 +1,5 @@
 import LinksNav from "./Linksnav";
+import { Link } from 'react-router-dom'
 
 
 
@@ -9,7 +10,9 @@ function NavBar(){
     return(
     <nav className="navbar">
         
-        <img src={logo} style={{maxHeight: 70}}/>
+        
+        <Link to="/recipes" >
+            <img src={logo} style={{maxHeight: 70}}/></Link>
         <LinksNav />
     </nav>
     );    

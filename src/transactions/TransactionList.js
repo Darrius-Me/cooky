@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import TransactionTable from "./TransactionTable";
 import { Link } from 'react-router-dom'
+import NavBar from "../Navbar";
 
 
 
@@ -16,10 +17,14 @@ function TransactionLists() {
     }, [])
 
     return(
-        <div style={{marginTop: 20}}>
-            {bears && <TransactionTable bears={bears}/>}
-            <Link to="/transactions/create" >Add New</Link>
+        <div>
+            <NavBar/>
+            <div style={{marginTop: 20}}>
+                {bears && <TransactionTable bears={bears}/>}
+                <Link to="/transactions/create" >Add New</Link>
+            </div>
         </div>
+        
     );
 }
 

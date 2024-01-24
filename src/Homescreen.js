@@ -1,9 +1,14 @@
 import bearlogo from "./resources/Bear.png"
+import NavBar from './Navbar';
 
 function HomeScreen(){
+
     return(
         <div>
-            <img src={bearlogo} className="HomeLogo"></img>
+            <NavBar />
+            
+            
+
         </div>
     );
 }
