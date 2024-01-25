@@ -6,12 +6,12 @@ function NotFound(){
     const navigate = useNavigate();
 
     const gohome = () => {
-        navigate('/recipes')
+        navigate('/login')
     }
 
     return(
         <div>
-            <NavBar></NavBar>
+            {/* <NavBar></NavBar> */}
             <h1 className="alternate_font" style={{color: "black", margin: 50}}>Page not found</h1>
             <button className="div-button" onClick={gohome}>Go to home</button>
         </div>

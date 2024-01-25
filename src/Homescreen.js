@@ -1,4 +1,3 @@
-import NavBar from './Navbar';
 import { useEffect } from "react";
 import { useNavigate } from 'react-router-dom'
 
@@ -17,10 +16,6 @@ function HomeScreen(){
 
     return(
         <div>
-            <NavBar />
-            
-            
-
         </div>
     );
 }
