@@ -4,6 +4,7 @@ import axios from 'axios'
 import NavBar from "../Navbar";
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import PopUp from "../components/Popup";
 
 
 
@@ -18,24 +19,26 @@ function RecipeCreate() {
     const [procedure, SetProcedure] = useState('');
     const [image, SetImage] = useState(null);
     const author = JSON.parse(sessionStorage.getItem("auth")).name;
-    const authorid = JSON.parse(sessionStorage.getItem("auth")).id;
+    const [authorid, SetAuthorId] = useState(JSON.parse(sessionStorage.getItem("auth")).id);
     const navigate = useNavigate();
 
 
     const handleCreate = (e) => {
         e.preventDefault();
+
         const recipe = {recipename, serving, preparation, ingredients, procedure, image, author, authorid};
         
         axios.post('http://localhost:8000/recipes', recipe)
         .then( result => {
-            console.log("Saved Successfully!");
-            navigate('../recipes')
+            setOkayButtonPopup(true);
         })
         .catch( e => {
             console.log(e);
         })
     }
 
+    //ready file to save to server, converted as base64 to be able to save to JSON server
+    //JSON server was used to save files t
     const savefile = async (e) => {
         try {
             const file = e.target.files[0];
@@ -61,6 +64,15 @@ function RecipeCreate() {
         })
     }
 
+    const [okaybuttonPopup, setOkayButtonPopup] = useState(false);
+    const [isokayPopup, setIsOkayPopup] = useState(false);
+
+    useEffect(() =>{
+        if (isokayPopup) {
+            navigate('/recipes')
+        }
+    }, [isokayPopup])
+
     return(
         <div>
             <NavBar/>
@@ -84,7 +96,7 @@ function RecipeCreate() {
                     </div>
                     
                     <label>Main Image</label>
-                    <input required onChange={savefile} type="file"></input>
+                    <input required onChange={savefile} type="file" accept="image/*"></input>
                     
                     
                     
@@ -98,8 +110,6 @@ function RecipeCreate() {
                     } }
                     />
                     
-                    
-
                     <label>Procedure</label>
                     <CKEditor
                     editor={ ClassicEditor }
@@ -113,6 +123,13 @@ function RecipeCreate() {
                     <button type="submit" className="div-button round-edge" style={{marginTop: 20}}>Publish Recipe</button>
                 </form>
             </div>
+            
+            <PopUp isConfirm={true} trigger={okaybuttonPopup} setTrigger={setIsOkayPopup} setButton={setOkayButtonPopup}>
+                <div className="popup-content">
+                    <h1 className="alternate_font">Save Success</h1>
+                    <p>The details of <b>{recipename}</b> Recipe has been saved.</p>
+                </div>
+            </PopUp>
         </div>
         
     );

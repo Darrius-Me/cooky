@@ -8,7 +8,7 @@ function NavBar(){
     const logo = require('./resources/cooky-nav.png');
 
     return(
-    <nav className="navbar">
+    <nav className="navbarcustom navbar">
         
         
         <Link to="/recipes" >

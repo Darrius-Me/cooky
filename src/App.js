@@ -1,6 +1,6 @@
 import './App.css';
 import './bootstrap.css';
-import { BrowserRouter as Router, Route, Routes} from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import LoginPageInput from './users/Login';
 import HomeScreen from './Homescreen';
 import RegisterForm from './users/Register';
@@ -10,13 +10,11 @@ import RecipeCreate from './recipes/RecipeCreate';
 import RecipeLists from './recipes/RecipeList';
 import RecipeDetails from './recipes/RecipeDetails';
 import RecipeEdit from './recipes/RecipeEdit';
+import NotFound from './NotFound';
 
 
 
 function App() {
-
-  
-
 
   return (
     <div className="App">
@@ -32,6 +30,7 @@ function App() {
             <Route exact path='/transactions/create' element={<TransactionCreate/>}/>
             <Route exact path='/login' element={<LoginPageInput/>}/>
             <Route exact path='/register' element={<RegisterForm/>}/>
+            <Route exact path='*' element={<NotFound/>}/>
           </Routes>
       </Router>
       

@@ -1,9 +1,12 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 function LinksNav()
 {
     const navigate = useNavigate();
     const userlogged = JSON.parse(sessionStorage.getItem("auth")).name;
+    const userloggedadmin = JSON.parse(sessionStorage.getItem("auth")).isAdmin;
+    console.log(userloggedadmin);
+    console.log(typeof(userloggedadmin));
 
     const doLogout = (e) => {
         e.preventDefault();
@@ -13,10 +16,12 @@ function LinksNav()
     }
     
     return(
-        <div className="links">
-            {/* <Link to="/recipes" >Recipes</Link> */}
+        <div className="links" style={{color: 'white'}}>
             Hello <b><u>{userlogged}</u></b>
-            <button className='div-button' style={{marginLeft: 20}} onClick={doLogout}>Logout</button>
+            {
+                userloggedadmin && <button className='div-button-alternate' style={{marginLeft: 20}} onClick={doLogout}><b>User Management</b></button>
+            }
+            <button className='div-button-alternate' style={{marginLeft: 20}} onClick={doLogout}><b>Logout</b></button>
         </div>
     );
 }

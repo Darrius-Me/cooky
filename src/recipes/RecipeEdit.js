@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate, useLocation } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import axios from 'axios'
 import NavBar from "../Navbar";
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import PopUp from "../components/Popup";
 
 
 
@@ -18,26 +19,21 @@ function RecipeEdit() {
     const [ingredients, SetIngredients] = useState(location.state.recipe.ingredients);
     const [procedure, SetProcedure] = useState(location.state.recipe.procedure);
     const [image, SetImage] = useState(location.state.recipe.image);
-    const [author, SetAuthor] = useState(location.state.recipe.author);
-    const [id, SetId] = useState(location.state.recipe.id);
+    const author = location.state.recipe.author;
+    const authorid = location.state.recipe.authorid;
+    const id = location.state.recipe.id;
+    const recipe = {id, recipename, serving, preparation, ingredients, procedure, image, author, authorid};
+    console.log(recipe);
+
 
     const navigate = useNavigate();
 
-    
-
-
-
-
     const handleCreate = (e) => {
         e.preventDefault();
-        SetAuthor("Darrius");
-        const recipe = {id, recipename, serving, preparation, ingredients, procedure, image, author};
-        
-        console.log(id)
+
         axios.put('http://localhost:8000/recipes/' + id, recipe)
         .then( result => {
-            console.log("Saved Successfully!");
-            navigate('./recipes')
+            setOkayButtonPopup(true);
         })
         .catch( e => console.log(e))
     }
@@ -70,6 +66,24 @@ function RecipeEdit() {
         })
     }
 
+    const [backbuttonPopup, setBackButtonPopup] = useState(false);
+    const [isbackPopup, setIsBackPopup] = useState(false);
+    const [okaybuttonPopup, setOkayButtonPopup] = useState(false);
+    const [isokayPopup, setIsOkayPopup] = useState(false);
+
+
+    useEffect(() =>{
+        if (isbackPopup) {
+            navigate('/recipes/details', {state: {recipe: recipe}})
+        }
+    }, [isbackPopup])
+
+    useEffect(() =>{
+        if (isokayPopup) {
+            navigate('/recipes/details', {state: {recipe: recipe}})
+        }
+    }, [isokayPopup])
+
     var divStyle = {
         backgroundImage: 'url(' + image + ')',
     };
@@ -79,7 +93,7 @@ function RecipeEdit() {
             <NavBar/>
             <div className="edit-page-background" style={divStyle}>
                 <div className="edit-page edit-page-foreground">
-                    <Link to="/recipes" ><p style={{color: "gray", fontWeight: "bold"}}>← Back to Feed</p></Link>
+                    <button className="invi-button" onClick={() => setBackButtonPopup(true)}><p style={{color: "gray", fontWeight: "bold"}}>← Back to Feed</p></button>
 
                     <h1 className="alternate_font" style={{marginBottom: 30}}>New Recipe</h1>
 
@@ -98,7 +112,7 @@ function RecipeEdit() {
                         </div>
                         
                         <label>Main Image</label>
-                        <input onChange={savefile} type="file"></input>
+                        <input onChange={savefile} type="file"  accept="image/*"></input>
                         
                         
                         
@@ -129,6 +143,19 @@ function RecipeEdit() {
                 </div>
             </div>
             
+            <PopUp isConfirm={false} trigger={backbuttonPopup} setTrigger={setIsBackPopup} setButton={setBackButtonPopup}>
+                <div className="popup-content">
+                    <h1 className="alternate_font">Cancel</h1>
+                    <p>Are you sure you want to cancel editing this recipe? Your progress will not be saved.</p>
+                </div>
+            </PopUp>
+
+            <PopUp isConfirm={true} trigger={okaybuttonPopup} setTrigger={setIsOkayPopup} setButton={setOkayButtonPopup}>
+                <div className="popup-content">
+                    <h1 className="alternate_font">Save Success</h1>
+                    <p>The details of <b>{recipename}</b> Recipe has been saved.</p>
+                </div>
+            </PopUp>
         </div>
         
     );
