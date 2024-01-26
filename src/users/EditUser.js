@@ -79,7 +79,7 @@ function EditUser(){
 
     return (
         <div>
-            <div className="signup-page">
+            <div className="useredit-page">
                 <p className="signup-header">Edit User</p>
                 <div className="forms">
                     <div>
@@ -119,7 +119,7 @@ function EditUser(){
                         <input
                             id="matchregister"
                             type="password"
-                            value={password}
+                            value={matchpass}
                             required
                             onChange={(e) => SetMatch(e.target.value)}
                         ></input>
@@ -135,6 +135,7 @@ function EditUser(){
                                     type="checkbox"
                                     onChange={checkingbox}
                                     value={isAdmin}
+                                    checked={isAdmin}
                                 ></input>
                             </div>
                         </div>

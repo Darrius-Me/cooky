@@ -130,6 +130,33 @@
   color: #cb4036;
 }
 
+.useredit-page{
+  background-image: linear-gradient(to left, rgba(255,255,255,0) 10%,
+              rgba(255,255,255,1)), url("resources/user.jpg");
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: left;
+  padding-top: 5%;
+  padding-left: 10%;
+  color: #cb4036;
+}
+
+.userlist-page{
+  background-image: linear-gradient(to left, rgba(255,255,255,0) 10%,
+              rgba(255,255,255,1)), url("resources/userlist.png");
+  height: calc(100vh - 90px);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: left;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 2%;
+}
+
+
 .login-page{
   background-image: linear-gradient(to left, rgba(255,255,255,0) 5%,
               rgba(255,255,255,1)), url("resources/login-bg.png");
@@ -185,6 +212,14 @@
 }
 
 .recipelist-page {
+  background-image: linear-gradient(to left, rgba(255,255,255,0) 10%,
+              rgba(255,255,255,1)), url("resources/recipelist.png");
+  height: calc(100vh - 90px);
+  max-height: calc(100vh - 90px);
+  overflow: auto;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   text-align: left;
   padding-left: 10%;
   padding-right: 10%;
@@ -198,6 +233,11 @@
   width: 100%;
   overflow-y: auto;
   max-height: 90vh;
+}
+
+.recipe-details {
+  max-height: calc(100vh - 90px);
+  overflow: auto;
 }
 
 .div-button {

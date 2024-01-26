@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import PopUp from "../components/Popup";
 
@@ -67,7 +67,7 @@ function CreateUser(){
 
     return (
         <div>
-            <div className="signup-page">
+            <div className="useredit-page">
                 <p className="signup-header">Add User</p>
                 <div className="forms">
                     <form onSubmit={handleRegister}>
