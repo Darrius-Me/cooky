@@ -61,18 +61,18 @@ function UserList() {
 
         <div>
             <NavBar/>
-            <div className="recipelist-page">
+            <div className="userlist-page">
                 <div>
-                    <Link to="/recipes" ><p style={{color: "gray", fontWeight: "bold"}}>← Back to Feed</p></Link>
-                    <h1 className="alternate_font">Users</h1>
+                    <div>
+                        <Link to="/recipes" ><p style={{color: "gray", fontWeight: "bold"}}>← Back to Feed</p></Link>
+                        <h1 className="alternate_font">Users</h1>
+                    </div>
+                    <div style={{marginTop: 40, marginBottom: 50}}>
+                        <Link to="/usercreate" className="div-button">Create New</Link>
+                    </div>
                 </div>
-                <div style={{marginTop: 40}}>
-                    <Link to="/usercreate" className="div-button">Create New</Link>
-                </div>
-            </div>
 
-            <div className="recipelist-page">
-                <div className="" >
+                <div>
                     <table className="table">
                         <thead className="table-header">
                             <tr>
@@ -116,6 +116,7 @@ function UserList() {
                     </table>
                 </div>
             </div>
+            
 
             <PopUp isConfirm={false} trigger={deletebuttonPopup} setTrigger={setIsDeletePopup} setButton={setDeleteButtonPopup}>
                 <div className="popup-content">

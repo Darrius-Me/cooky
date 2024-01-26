@@ -65,55 +65,58 @@ function RecipeDetails() {
 
         <div>
             <NavBar/>
-            <div className="view-info setbackground" style={divStyle}>
-                <div className="view-page-foreground view-page">
-                    <div style={{paddingBottom: 150}}>
-                        <Link to="/recipes" ><p style={{color: "white", fontWeight: "bold"}}>← Back to Feed</p></Link>
-                    </div>
-                    
-                    {/* header details */}
-                    <h1 className="alternate_font" style={{color: "white"}}>{recipename}</h1>
-                    <p style={{color: "white"}}>by {author}</p>
-                    <div className="contain">
-                        <div className="contain" style={{width: 300}}>
-                            <div className="one details-info">
-                                <p>{serving} servings</p>
-                            </div>
-                            <div className="two details-info">
-                                <p>{preparation}</p>
-                            </div>
+            <div className="recipe-details">
+                <div className="view-info setbackground" style={divStyle}>
+                    <div className="view-page-foreground view-page">
+                        <div style={{paddingBottom: 150}}>
+                            <Link to="/recipes" ><p style={{color: "white", fontWeight: "bold"}}>← Back to Feed</p></Link>
                         </div>
-
-                        {/* buttons visible if user created or admin user */}
-                        {
-                            (userloggedid === authorid || userloggedadmin === true) &&
-                            <div className="details-admin">
-                                <button className="div-button round-edge right-align" style={{marginLeft: 20}} onClick={() => setDeleteButtonPopup(true)}>Delete</button>
-                                <Link 
-                                    to="/recipes/edit"
-                                    state={{recipe: recipe}}
-                                    >
-                                    <div className="div-button-alternate round-edge right-align">Edit</div>
-                                </Link>
+                        
+                        {/* header details */}
+                        <h1 className="alternate_font" style={{color: "white"}}>{recipename}</h1>
+                        <p style={{color: "white"}}>by {author}</p>
+                        <div className="contain">
+                            <div className="contain" style={{width: 300}}>
+                                <div className="one details-info">
+                                    <p>{serving} servings</p>
+                                </div>
+                                <div className="two details-info">
+                                    <p>{preparation}</p>
+                                </div>
                             </div>
-                        }
-                    </div>
-                </div>
-            </div>
 
-            {/* content details */}
-            <div className="view-page">
-                <div className="contain">
-                    <div className="ingredients-wrapper">
-                        <h1 className="alternate_font">Ingredients</h1>
-                        <div dangerouslySetInnerHTML={{__html: ingredients}} style={{marginTop: 40}}></div>
+                            {/* buttons visible if user created or admin user */}
+                            {
+                                (userloggedid === authorid || userloggedadmin === true) &&
+                                <div className="details-admin">
+                                    <button className="div-button round-edge right-align" style={{marginLeft: 20}} onClick={() => setDeleteButtonPopup(true)}>Delete</button>
+                                    <Link 
+                                        to="/recipes/edit"
+                                        state={{recipe: recipe}}
+                                        >
+                                        <div className="div-button-alternate round-edge right-align">Edit</div>
+                                    </Link>
+                                </div>
+                            }
+                        </div>
                     </div>
-                    <div className="procedure-wrapper">
-                        <h1 className="alternate_font">Procedure</h1>
-                        <div dangerouslySetInnerHTML={{__html: procedure}} style={{marginTop: 40}}></div>
+                </div>
+
+                {/* content details */}
+                <div className="view-page">
+                    <div className="contain">
+                        <div className="ingredients-wrapper">
+                            <h1 className="alternate_font">Ingredients</h1>
+                            <div dangerouslySetInnerHTML={{__html: ingredients}} style={{marginTop: 40}}></div>
+                        </div>
+                        <div className="procedure-wrapper">
+                            <h1 className="alternate_font">Procedure</h1>
+                            <div dangerouslySetInnerHTML={{__html: procedure}} style={{marginTop: 40}}></div>
+                        </div>
                     </div>
                 </div>
             </div>
+            
             
             {/* Popup configuration */}
             <PopUp isConfirm={false} trigger={deletebuttonPopup} setTrigger={setIsDeletePopup} setButton={setDeleteButtonPopup}>
