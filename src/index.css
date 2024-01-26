@@ -370,3 +370,8 @@
   max-width: 100%;
   background-color: #cb4036;
 }
+
+.table-header {
+	width:100%;
+	background:#bebebe;
+}

@@ -13,6 +13,7 @@ import RecipeEdit from './recipes/RecipeEdit';
 import NotFound from './NotFound';
 import CreateUser from './users/CreateUser';
 import UserList from './users/UserList';
+import EditUser from './users/EditUser';
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
             <Route exact path='/login' element={<LoginPageInput/>}/>
             <Route exact path='/register' element={<RegisterForm/>}/>
             <Route exact path='/usercreate' element={<CreateUser/>}/>
+            <Route exact path='/useredit' element={<EditUser/>}/>
             <Route exact path='/userlist' element={<UserList/>}/>
           </Routes>
       </Router>
