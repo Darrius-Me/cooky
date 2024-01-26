@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from 'react-router-dom'
-import { toast } from "react-toastify";
 import axios from 'axios'
 
 function RegisterForm(){
 
     const [name, SetName] = useState('');
-    const [namevalid, SetNameValid] = useState(false);
 
     const [email, SetUserName] = useState('');
     const [uservalid, SetUserValid] = useState(false);
@@ -43,14 +41,13 @@ function RegisterForm(){
     }
 
     useEffect(() => {
-        const USER_REGEX = new RegExp('^[A-Za-z][A-Za-z]{3,25}$');
+        const USER_REGEX = new RegExp('^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$');
         const result = USER_REGEX.test(email);
         SetUserValid(result);
     }, [email]);
 
     useEffect(() =>{
-        //const PASS_REGEX = new RegExp('^(?=.*)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$');
-        const PASS_REGEX = new RegExp('^[a-zA-Z0-9-]{8,}$');
+        const PASS_REGEX = new RegExp('^[a-zA-Z0-9-_.]{8,}$');
         const result = PASS_REGEX.test(password);
         SetPwdValid(result);
     }, [password]);
@@ -96,7 +93,7 @@ function RegisterForm(){
                         required
                         onChange={(e) => SetPassword(e.target.value)}
                     ></input>
-                    {!pwdvalid && password!=='' && <p className="inputerror">Password must contain 8 characters!</p>}
+                    {!pwdvalid && password!=='' && <p className="inputerror">Password must contain at least 8 characters. Only accepts _ and . special characters!</p>}
 
                     <label htmlFor="matchregister">Repeat Password</label>
                     <input
@@ -107,11 +104,10 @@ function RegisterForm(){
                     ></input>
                     {!matchvalid && matchpass!=='' && <p className="inputerror">Password does not match!</p>}
 
-                    <button disabled={!uservalid || !pwdvalid ? true : false} className="div-button round-edge">Sign Up</button>
+                    <button disabled={!uservalid || !pwdvalid || !matchvalid ? true : false} className="div-button round-edge">Sign Up</button>
 
 
-                    <div
-                        style={{textAlign: "left"}}>
+                    <div style={{textAlign: "left"}}>
                         <p className="signup">Already have an account? <Link to="../login" ><u className="signup-link">Log In instead</u></Link></p>
                     </div>
                 </form>
