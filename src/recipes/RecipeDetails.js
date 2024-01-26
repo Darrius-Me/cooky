@@ -66,6 +66,7 @@ function RecipeDetails() {
         <div>
             <NavBar/>
             <div className="recipe-details">
+                {/* style={divstyle} sets up the background for the div depending on the saved image of the recipe */}
                 <div className="view-info setbackground" style={divStyle}>
                     <div className="view-page-foreground view-page">
                         <div style={{paddingBottom: 150}}>
@@ -102,7 +103,7 @@ function RecipeDetails() {
                     </div>
                 </div>
 
-                {/* content details */}
+                {/* content details, parsed from html since it uses a high level editor in creating the recipe */}
                 <div className="view-page">
                     <div className="contain">
                         <div className="ingredients-wrapper">
@@ -118,8 +119,8 @@ function RecipeDetails() {
             </div>
             
             
-            {/* Popup configuration */}
-            <PopUp isConfirm={false} trigger={deletebuttonPopup} setTrigger={setIsDeletePopup} setButton={setDeleteButtonPopup}>
+            {/* Pop ups for confirmations; trigger and setTrigger is for opening and closing of popup, setAction is for custom actions when yes is click on popup */}
+            <PopUp isConfirm={false} trigger={deletebuttonPopup} setTrigger={setDeleteButtonPopup} setAction={setIsDeletePopup}>
                 <div className="popup-content">
                     <h1 className="alternate_font">Delete Recipe?</h1>
                     <p>Are you sure you want to delete the recipe for <b>{recipename}</b>?</p>
@@ -127,7 +128,7 @@ function RecipeDetails() {
                 </div>
             </PopUp>
 
-            <PopUp isConfirm={true} trigger={okaybuttonPopup} setTrigger={setIsOkayPopup} setButton={setOkayButtonPopup}>
+            <PopUp isConfirm={true} trigger={okaybuttonPopup} setTrigger={setOkayButtonPopup} setAction={setIsOkayPopup}>
                 <div className="popup-content">
                     <h1 className="alternate_font">Deleted</h1>
                     <p>The recipe for <b>{recipename}</b> has been deleted.</p>

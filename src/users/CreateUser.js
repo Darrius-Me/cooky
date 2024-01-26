@@ -5,6 +5,17 @@ import PopUp from "../components/Popup";
 
 function CreateUser(){
 
+    //get info of logged user
+    const userloggedadmin = JSON.parse(sessionStorage.getItem("auth")).isAdmin;
+
+    //return to recipe list if not an admin
+    useEffect(() =>{
+        if (!userloggedadmin) {
+            navigate('/recipes')
+        }
+    }, [])
+
+    //variables for the user form
     const [name, SetName] = useState('');
     const [email, SetUserName] = useState('');
     const [emailvalid, SetEmailValid] = useState(false);
@@ -16,6 +27,7 @@ function CreateUser(){
 
     const navigate = useNavigate();
 
+    //function for saving user to database
     const handleRegister = (e) => {
         e.preventDefault();
         const user = {name, email, password, isAdmin};
@@ -26,18 +38,21 @@ function CreateUser(){
             })
     }
 
+    //regex for validating email
     useEffect(() => {
-        const USER_REGEX = new RegExp('^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$');
-        const result = USER_REGEX.test(email);
+        const EMAIL_REGEX = new RegExp('^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$');
+        const result = EMAIL_REGEX.test(email);
         SetEmailValid(result);
     }, [email]);
 
+    //regex for validating password; must be at least 8 characters with only _ and . as special characters
     useEffect(() =>{
         const PASS_REGEX = new RegExp('^[a-zA-Z0-9-_.]{8,}$');
         const result = PASS_REGEX.test(password);
         SetPwdValid(result);
     }, [password]);
 
+    //checking if passwords match
     useEffect(() => {
         if (matchpass === password) {
             SetMatchValid(true);
@@ -47,18 +62,22 @@ function CreateUser(){
         }
     }, [password, matchpass]);
 
+    //set value of isAdmi if checkbox is checked
     const checkingbox = (e) => {
         const x = isAdmin;
         SetIsAdmin(!x);
     }
 
+    //navigate to userlist on cancel
     const cancelbutton = (e) => {
         navigate('/userlist');
     }
 
+    //variables for popup
     const [okaybuttonPopup, setOkayButtonPopup] = useState(false);
     const [isokayPopup, setIsOkayPopup] = useState(false);
 
+    //navigate to userlist on clicking okay
     useEffect(() =>{
         if (isokayPopup) {
             navigate('/userlist')
@@ -70,7 +89,8 @@ function CreateUser(){
             <div className="useredit-page">
                 <p className="signup-header">Add User</p>
                 <div className="forms">
-                    <form onSubmit={handleRegister}>
+                    {/* form for user creation */}
+                    <form>
                         
                         <label htmlFor="nameregister">Name</label>
                         <input
@@ -122,6 +142,7 @@ function CreateUser(){
                                 ></input>
                             </div>
                         </div>
+                        {/* buttons for the form; add user button only clickable if email, password and matchpassowrd are valid */}
                         <div style={{justifyContent: "center", display: "flex"}}>
                             <button  className="inactive-button round-edge" style={{width: 200, marginTop: 50}} onClick={cancelbutton}>Cancel</button>
                             <button 
@@ -130,12 +151,14 @@ function CreateUser(){
                                     style={{width: 200, marginTop: 50, marginLeft: 50}} 
                                     onClick={handleRegister}>
                                     Add User
-                                </button>
+                            </button>
                         </div>
                     </form>
                 </div>
             </div>
-            <PopUp isConfirm={true} trigger={okaybuttonPopup} setTrigger={setIsOkayPopup} setButton={setOkayButtonPopup}>
+
+            {/* Pop ups for confirmations; trigger and setTrigger is for opening and closing of popup, setAction is for custom actions when yes is click on popup */}
+            <PopUp isConfirm={true} trigger={okaybuttonPopup} setTrigger={setOkayButtonPopup} setAction={setIsOkayPopup}>
                 <div className="popup-content">
                     <h1 className="alternate_font">Save Success</h1>
                     <p>The details of <b>{name}</b> has been saved.</p>
