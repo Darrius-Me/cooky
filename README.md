@@ -1,70 +1,81 @@
-# Getting Started with Create React App
+# Getting started
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Starting the application
+    •	On the terminal, run the command to start the JSON Server as a mockup server
+        o	npx json-server --watch server/db.json --port 8000
+        o   This will run the server with address: http://localhost:8000/
+    •	After starting the JSON server, run the following command to start the app
+        o	npm run start
+        o   This will run the application with address: http://localhost:8000/
+        o	This should also redirect to the login page of the application: http://localhost:8000/login
 
-## Available Scripts
+## The Server
+    •   The JSON server has 2 endpoints/tables
+        o   http://localhost:8000/users
+                {
+                    "userid": "21b8",
+                    "name": "admin",
+                    "email": "admin@gmail.com",
+                    "password": "adminadmin",
+                    "isAdmin": true,
+                    "id": "21b8"
+                }
+        o   http://localhost:8000/recipes
+                {
+                    "id": "77eb",
+                    "recipename": "Steamed Salmon",
+                    "serving": "4",
+                    "preparation": "00:30",
+                    "ingredients": "Sample Ingredients",
+                    "procedure": "Sample Procedure",
+                    "image": {IMAGE Base64},
+                    "author": "Darrius",
+                    "authorid": "4099"
+                }
+    •   The JSON server also saves the image files by storing the file using base64 due to the availability of cloud storage
+    
 
-In the project directory, you can run:
+## User authentication
+    •	User can log in using these default credentials
+        o	Email: admin@gmail.com, Password: adminadmin, isAdmin: true
+        o	Email: darrius@gmail.com, Password: darriusdarrius, isAdmin: false
+        o	Email: alinsugay@gmail.com, Password: alinsugayalinsugay, isAdmin: false
+    •	Users can also opt out to use these credentials and can register their own on the register page by clicking the SIGN UP NOW link below the login page
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Modules
+    •   There are 2 modules that are available on the trial project
+        o   Recipes Management
+        o   Users Management
 
-### `npm test`
+## Recipes Management
+    •   The recipe management modules is the main module for the application
+    •   The module consists of the following functions
+        o   Creating a new recipe
+        o   Viewing a lists of recipe
+            o   List of own recipe
+            o   List of other user's recipe
+            o   List of all recipes (available only to the admin users)
+        o   Viewing the details of the recipe
+        o   Editing and deleting the recipe
+            o   This function is available only if the logged users is viewing a recipe of his own creation, or if the logged user is an admin
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Users Management
+    •   This module is only available to admin users. Accessing this module using non admin users will redirect the user to the recipe list instead.
+    •   The module consists of the following functions
+        o   Creating a new user
+        o   Viewing a list of users
+        o   Editing and deleting a of recipe
+            o   A user can delete users if the user selected is not the logged user
+    •   Creating and editing users have the capability to validate the input fields
+        o Email
+            o   Has a regex checking if an email is valid
+        o Password
+            o   Has a regex checking if the password has at least 8 characters
+            o   Only accepts period (.) and underscore (_) as a special character
+            o   Will require the user to re-enter the password to a separate field to check if both passwords matched
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Testing
+    •   For the functional testing, you may reference the FunctionalityTest.md file
