@@ -24,9 +24,9 @@ function RecipeLists() {
         ).then( data => {
             const filteredown = data.filter(recipe => recipe.authorid.includes(userloggedid));
             const filteredother = data.filter(recipe => !recipe.authorid.includes(userloggedid));
-            SetOwnRecipes(filteredown.sort((r1, r2) => (r1.recipename > r2.recipename) ? 1 : (r1.recipename < r2.recipename) ? -1 : 0));
-            SetOtherRecipes(filteredother.sort((r1, r2) => (r1.recipename > r2.recipename) ? 1 : (r1.recipename < r2.recipename) ? -1 : 0));
-            SetAllRecipes(data.sort((r1, r2) => (r1.recipename > r2.recipename) ? 1 : (r1.recipename < r2.recipename) ? -1 : 0));
+            SetOwnRecipes(filteredown.sort((r1, r2) => (r1.recipename < r2.recipename) ? 1 : (r1.recipename > r2.recipename) ? -1 : 0));
+            SetOtherRecipes(filteredother.sort((r1, r2) => (r1.recipename < r2.recipename) ? 1 : (r1.recipename > r2.recipename) ? -1 : 0));
+            SetAllRecipes(data.sort((r1, r2) => (r1.recipename < r2.recipename) ? 1 : (r1.recipename > r2.recipename) ? -1 : 0));
         })
     }, [userloggedid])
         
