@@ -2,13 +2,13 @@
 function PopUp(props){
 
     const closebutton = () => {
-        props.setTrigger(false);
-        props.setButton(false)
+        props.setAction(false);
+        props.setTrigger(false)
     }
 
     const yesbutton = () => {
-        props.setTrigger(true);
-        props.setButton(false)
+        props.setAction(true);
+        props.setTrigger(false)
     }
     
     return (props.trigger) ? (
