@@ -1,60 +1,10 @@
 {
-  "bears": [
-    {
-      "id": "1",
-      "name": "Louie",
-      "age": 3,
-      "description": "Small and fluffy with shirt"
-    },
-    {
-      "id": "2",
-      "name": "Gellie",
-      "age": 7,
-      "description": "Big and brown"
-    },
-    {
-      "id": "3",
-      "name": "Merrie",
-      "age": 5,
-      "description": "Fluffy and long nose"
-    },
-    {
-      "id": "4",
-      "name": "Rosie",
-      "age": 6,
-      "description": "Fluffy and white"
-    },
-    {
-      "id": "5",
-      "name": "Taro",
-      "age": 4,
-      "description": "Purple"
-    },
-    {
-      "id": "6",
-      "name": "Carrie",
-      "age": "1",
-      "description": "Small in car"
-    },
-    {
-      "id": "a737",
-      "name": "Darrius",
-      "age": "26",
-      "description": "Dalyus"
-    },
-    {
-      "id": "1f06",
-      "name": "Chwinkies",
-      "age": "16",
-      "description": "Twinkle star"
-    }
-  ],
   "users": [
     {
       "userid": "4099",
       "name": "Darrius",
       "email": "darrius@gmail.com",
-      "password": "Augf9jl5.",
+      "password": "darriusdarrius",
       "isAdmin": false,
       "id": "4099"
     },
@@ -70,7 +20,7 @@
       "userid": "3505",
       "name": "Alinsugay",
       "email": "alinsugay@gmail.com",
-      "password": "Augf9jl5.",
+      "password": "alinsugayalinsugay",
       "isAdmin": false,
       "id": "3505"
     }

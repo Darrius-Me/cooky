@@ -27,7 +27,7 @@ function LoginPageInput({setToken}){
     }, [])
 
     //check user if exist in database and compare credentials. If exists and valid credentials, save user info to session storage
-    const authenticateUser = (useremail, password) => {        
+    const authenticateUser = (useremail, password) => {  
         axios.get('http://localhost:8000/users')
         .then( result => {
             result.data.map(user => {
@@ -44,8 +44,9 @@ function LoginPageInput({setToken}){
     }
 
     //function for submitting form on login. If valid, redirect to recipe list
-    const handlesubmit = async (e) =>
+    const handlesubmit = (e) =>
     {
+        e.preventDefault();
         authenticateUser(userinput, passinput);
         if (isValid) {
            navigate('/recipes');

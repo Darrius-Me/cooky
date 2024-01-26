@@ -24,7 +24,7 @@ function LinksNav()
             {/* User management button is only accessible by admin users */}
             Hello <b><u>{userlogged}</u></b>
             {
-                userloggedadmin && <button className='div-button-alternate' style={{marginLeft: 20}} to={gousers}><b>User Management</b></button>
+                userloggedadmin && <button className='div-button-alternate' style={{marginLeft: 20}} onClick={gousers}><b>User Management</b></button>
             }
             <button className='div-button-alternate' style={{marginLeft: 20}} onClick={doLogout}><b>Logout</b></button>
         </div>
