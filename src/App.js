@@ -11,8 +11,8 @@ import RecipeLists from './recipes/RecipeList';
 import RecipeDetails from './recipes/RecipeDetails';
 import RecipeEdit from './recipes/RecipeEdit';
 import NotFound from './NotFound';
-
-
+import CreateUser from './users/CreateUser';
+import UserList from './users/UserList';
 
 function App() {
 
@@ -23,6 +23,7 @@ function App() {
           
           <Routes>
             <Route exact path='/' element={<HomeScreen/>}/>
+            <Route exact path='*' element={<NotFound/>}/>
             <Route exact path='/transactions' element={<TransactionLists/>}/>
             <Route exact path='/recipes' element={<RecipeLists/>}/>
             <Route exact path='/recipes/create' element={<RecipeCreate/>}/>
@@ -31,7 +32,8 @@ function App() {
             <Route exact path='/transactions/create' element={<TransactionCreate/>}/>
             <Route exact path='/login' element={<LoginPageInput/>}/>
             <Route exact path='/register' element={<RegisterForm/>}/>
-            <Route exact path='*' element={<NotFound/>}/>
+            <Route exact path='/usercreate' element={<CreateUser/>}/>
+            <Route exact path='/userlist' element={<UserList/>}/>
           </Routes>
       </Router>
       
